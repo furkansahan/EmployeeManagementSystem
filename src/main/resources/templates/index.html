@@ -20,11 +20,17 @@
                 <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="addemp">Add Employeer</a>
+                <a class="nav-link" href="addemp">Add Employee</a>
             </li>
         </ul>
     </div>
 </nav>
+<!--navbar-->
+<div th:if=${session.msg}>
+    <div class="alert alert-success" role="alert" th:text="${session.msg}">
+    </div>
+<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+</div>
 <div class="container p-5">
 <table class="table table-striped">
     <thead class="bg-warning text-dark">

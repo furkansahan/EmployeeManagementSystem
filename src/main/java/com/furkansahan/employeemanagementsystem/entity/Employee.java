@@ -1,18 +1,24 @@
 package com.furkansahan.employeemanagementsystem.entity;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="EMP_SYSTEM")
 public class Employee {
 
-    public Employee() {
-        super();
-    }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String address;
     private String email;
     private String phno;
     private int salary;
-
+    public Employee() {
+        super();
+    }
     public int getId() {
         return id;
     }
