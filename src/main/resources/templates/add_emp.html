@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thmyeleaf.com">
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
@@ -20,12 +20,58 @@
                 <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Add Employeer</a>
+                <a class="nav-link" href="#">Add Employee</a>
             </li>
         </ul>
     </div>
 </nav>
+<!--navbar-->
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="text-center text-primary">Add Employee</h4>
+                    <form th:action="@{/register}" method="post">
+
+                        <div class="form-group">
+                            <label>Enter Full Name</label>
+                            <input type="text" class="form-control" name="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Enter Address</label>
+                            <input type="text" class="form-control" name="address">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Enter Email</label>
+                            <input type="text" class="form-control" name="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Enter Phone No</label>
+                            <input type="text" class="form-control" name="phno">
+                        </div>
+
+                        <div class="form-group">
+                        <label>Enter Salary</label>
+                        <input type="text" class="form-control" name="salary">
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block">Submit</button>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
 
 
 
