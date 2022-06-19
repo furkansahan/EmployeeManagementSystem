@@ -61,7 +61,7 @@ public class EmpController {
     @GetMapping("/page/{pageno}")
     public String findPaginated(@PathVariable int pageno, Model m) {
 
-        Page<Employee> emplist = service.getEmpByPaginate(pageno, 10);
+        Page<Employee> emplist = service.getEmpByPaginate(pageno, 5);
         m.addAttribute("emp", emplist);
         m.addAttribute("currentPage", pageno);
         m.addAttribute("totalPages", emplist.getTotalPages());
