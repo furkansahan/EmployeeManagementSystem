@@ -41,16 +41,17 @@
         <th scope="col">Email</th>
         <th scope="col">Phone No</th>
         <th scope="col">Salary</th>
+        <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr th:each="e:${emp}">
         <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
+        <td th:text="${e.name}">1</td>
+        <td th:text="${e.address}"></td>
+        <td th:text="${e.email}"></td>
+        <td th:text="${e.phno}"></td>
+        <td th:text="${e.salary}"></td>
     </tr>
     <tr>
         <th scope="row">2</th>
