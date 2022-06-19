@@ -1,90 +1,102 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thmyeleaf.com">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
 <head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-    <!-- Bootstrap CSS v5.0.2 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <title>Home page</title>
 </head>
 <body>
 
+<!-- Navbar -->
 
-<nav class="navbar navbar-expand-lg  bg-dark text-white">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Employee System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="addemp">Add Employee</a>
-            </li>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+            </a></li>
+            <li class="nav-item active"><a class="nav-link" href="addemp">Add
+                Employee</a></li>
+
         </ul>
     </div>
 </nav>
-<!--navbar-->
+
+<!-- Navbar -->
+
 <div th:if=${session.msg}>
     <div class="alert alert-success" role="alert" th:text="${session.msg}">
     </div>
-<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+    <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
 </div>
+
+
 <div class="container p-5">
-<table class="table table-striped">
-    <thead class="bg-warning text-dark">
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">Email</th>
-        <th scope="col">Phone No</th>
-        <th scope="col">Salary</th>
-        <th scope="col">Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="e:${emp}">
-        <th scope="row">1</th>
-        <td th:text="${e.name}">1</td>
-        <td th:text="${e.address}"></td>
-        <td th:text="${e.email}"></td>
-        <td th:text="${e.phno}"></td>
-        <td th:text="${e.salary}"></td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-    </tr>
-    </tbody>
-</table>
+    <table class="table table-striped" border="1">
+        <thead class="bg-primary text-white">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone No</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="e : ${emp}">
+            <th th:text="${e.id}">1</th>
+            <td th:text="${e.name}"></td>
+            <td th:text="${e.address}"></td>
+            <td th:text="${e.email}"></td>
+            <td th:text="${e.phno}"></td>
+            <td th:text="${e.salary}"></td>
+            <td><a class="btn btn-sm btn-primary"
+                   th:href="@{/edit/{id}(id=${e.id})}">Edit</a> <a
+                    class="btn btn-sm btn-danger"
+                    th:href="@{/delete/{id}(id=${e.id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
 
 
 
 
 
-
-
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>
